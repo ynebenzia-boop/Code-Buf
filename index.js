@@ -204,3 +204,174 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 </script>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+<script>
+window.addEventListener("load", () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll("[cards-anim]").forEach((container) => {
+    const items = Array.from(container.children);
+
+    gsap.set(items, { opacity: 0, y: 50 });
+
+    gsap.to(items, {
+      scrollTrigger: {
+        trigger: container,
+        start: "top 80%",
+        once: true,
+      },
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power2.out",
+    });
+  });
+
+  ScrollTrigger.refresh();
+});
+</script>
+<script>
+gsap.utils.toArray("[text-anim]").forEach((el) => {
+  const wrapper = document.createElement("div");
+  el.parentNode.insertBefore(wrapper, el);
+  wrapper.appendChild(el);
+
+  gsap.set(el, { y: "100%", opacity: 0 });
+
+  ScrollTrigger.create({
+    trigger: el,
+    start: "top 90%",
+    once: true,
+    onEnter: () => {
+      gsap.to(el, {
+        y: "0%",
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+      });
+    },
+  });
+});
+</script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    //---- Modal JS ----
+    // Get all dialog elements
+    const dialogs = document.querySelectorAll("dialog");
+    // Get the corresponding show buttons for each dialog
+    const showButtons = document.querySelectorAll("dialog + button");
+    // Get the corresponding close buttons for each dialog
+    const closeButtons = document.querySelectorAll("dialog button");
+
+    // Loop through each dialog and add event listeners
+    dialogs.forEach((dialog, index) => {
+      // "Show the dialog" button opens the dialog modally
+      showButtons[index].addEventListener("click", () => {
+        dialog.showModal();
+      });
+
+      // "Close" button closes the dialog
+      closeButtons[index].addEventListener("click", () => {
+        dialog.close();
+      });
+
+      // Close the dialog when clicking outside of it
+      dialog.addEventListener("click", (e) => {
+        const dialogDimensions = dialog.getBoundingClientRect();
+        if (
+          e.clientX < dialogDimensions.left ||
+          e.clientX > dialogDimensions.right ||
+          e.clientY < dialogDimensions.top ||
+          e.clientY > dialogDimensions.bottom
+        ) {
+          dialog.close();
+        }
+      });
+    });
+
+    //---- Update footer year ----
+    const elements = document.querySelectorAll('[data-footer-year]');
+    elements.forEach(element => {
+      element.textContent = new Date().getFullYear();
+    });
+
+    //---- Accordions ----
+    // Force-close all <details> on page load
+    document.querySelectorAll("details[open]").forEach(details => {
+      details.removeAttribute("open");
+    });
+
+    const detailsElements = document.querySelectorAll("details");
+
+    detailsElements.forEach(details => {
+      const summary = details.querySelector("summary");
+      const content = details.querySelector(".accordion-content");
+      const icon = summary.querySelector(".accordion-icon");
+
+      // Set initial collapsed state
+      gsap.set(content, { height: 0, overflow: "hidden" });
+      gsap.set(icon, { rotate: 0 });
+
+      summary.addEventListener("click", event => {
+        const isClosing = details.hasAttribute("open");
+
+        if (isClosing) {
+          // Prevent native close
+          event.preventDefault();
+
+          // Animate closing
+          content.style.height = `${content.scrollHeight}px`;
+          content.offsetHeight; // force reflow
+
+          gsap.to(content, {
+            height: 0,
+            duration: 0.4,
+            ease: "power3.inOut",
+            onComplete: () => {
+              details.removeAttribute("open");
+            }
+          });
+
+          gsap.to(icon, {
+            rotate: 0,
+            duration: 0.4,
+            ease: "power3.inOut"
+          });
+        }
+      });
+
+      details.addEventListener("toggle", () => {
+        if (details.open) {
+          const fullHeight = content.scrollHeight;
+
+          gsap.to(content, {
+            height: fullHeight,
+            duration: 0.4,
+            ease: "power3.out",
+            onComplete: () => {
+              content.style.height = "auto";
+            }
+          });
+
+          gsap.to(icon, {
+            rotate: 45,
+            duration: 0.4,
+            ease: "power3.out"
+          });
+        }
+      });
+    });
+
+  });
+</script>
