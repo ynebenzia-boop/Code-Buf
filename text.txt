@@ -1,0 +1,6 @@
+| Type  | Name     | Value                                                      |
+| ----- | -------- | ---------------------------------------------------------- |
+| TXT   | _webflow | one-time-verification=2a890a8f-40e5-47f7-9796-212dc4b0a4a4 |
+| A     | @        | 198.202.211.1                                              |
+| TXT   | _webflow | one-time-verification=2a890a8f-40e5-47f7-9796-212dc4b0a4a4 |
+| CNAME | www      | cdn.webflow.com                                            |
