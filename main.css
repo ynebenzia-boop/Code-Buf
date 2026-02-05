@@ -186,3 +186,14 @@ body,html {
 	from { transform: translateX(0%); }
 	to { transform: translateX(-50%); }
 }
+
+.wf-design-mode .accordion_content_wrap {
+	display: block;
+}
+.accordion_component.is-opened .accordion_toggle_icon {
+ transform: rotate(180deg);
+}
+.accordion_component.is-opened .accordion_toggle_icon {
+ color: #0E5DF5;
+}
+
