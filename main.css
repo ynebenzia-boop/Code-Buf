@@ -214,3 +214,20 @@ body,html {
  color: #222222;
 }
 
+.is-author-name::before {
+ content: 'and';
+ padding-right: 0.5rem;
+}
+.blog-collection_item .author_item:first-child .is-author-name::before {
+  content: '';
+  display: none;
+}
+
+.blog_card:hover .blog-card_titile {
+ color: var(--_color---secondary--blue);
+}
+
+.blog_card .blog-card_titile {
+ transition: all 300ms ease;
+}
+
