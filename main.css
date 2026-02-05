@@ -201,3 +201,16 @@ body,html {
  color: #222222;
 }
 
+.button-text,
+.btn-size {
+ transition: all 300ms ease;
+}
+
+.customers_card:hover .button-text {
+ color: #222222;
+}
+
+.customers_card:hover .btn-size{
+ color: #222222;
+}
+
