@@ -1,4 +1,3 @@
-<script>
 	//---- Skip to <main> functionality ----
   document.addEventListener('DOMContentLoaded', () => {
     const skipLinkEle = document.getElementById('skip-link');
@@ -16,9 +15,7 @@
     target.setAttribute('tabindex', '-1');
     target.focus();
   }
-</script>
 
-<script>
 document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('.nav');
     const btn = document.querySelector('.nav-menu_btn');
@@ -53,9 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateScrollState();
 });
-</script>
 
-<script>
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".main-slider_wrap").forEach((wrap, index) => {
       if (wrap.dataset.scriptInitialized) return;
@@ -109,9 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
-</script>
 
-<script>
+
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".accordion_cms_wrap").forEach((cmsWrap, listIndex) => {
       if (cmsWrap.dataset.scriptInitialized) return;
@@ -203,9 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
-</script>
 
-<script>
+
 window.addEventListener("load", () => {
   gsap.registerPlugin(ScrollTrigger);
 
@@ -230,8 +223,8 @@ window.addEventListener("load", () => {
 
   ScrollTrigger.refresh();
 });
-</script>
-<script>
+	
+
 gsap.utils.toArray("[text-anim]").forEach((el) => {
   const wrapper = document.createElement("div");
   el.parentNode.insertBefore(wrapper, el);
@@ -253,4 +246,3 @@ gsap.utils.toArray("[text-anim]").forEach((el) => {
     },
   });
 });
-</script>
