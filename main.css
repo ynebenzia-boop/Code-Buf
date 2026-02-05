@@ -111,4 +111,73 @@ body,html {
     font-size: 16px;
   }
 }
+
+	/* Mobile menu button animation */
+  .nav-menu_btn.w--open .cc-top {
+    transform: translateY(0.3rem) rotate(45deg);
+  }
+  .nav-menu_btn.w--open .cc-middle {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  .nav-menu_btn.w--open .cc-bottom {
+    transform: translateY(-0.3rem) rotate(-45deg);
+  }
+
+  .nav-menu_btn.w--open .bkg-open {
+   display: block;
+  }
+
+  .nav.is-scroll {
+   background-color: white;
+  }
+
+  .nav.is-scroll .bf-logo-dark {
+   display: none;
+  }
   
+  .nav.is-scroll .bf-logo {
+   display: block;
+  }
+
+  .nav.is-scroll .nav-link {
+   color: #222222;
+  }
+  
+  .nav.is-scroll .github_icon {
+   color: #24292F;
+  }
+  
+  .nav > * {
+   transition: all 300ms ease;
+  }
+  
+  .nav {
+   transition: all 300ms ease;
+  }
+
+
+  /* When a nav dropdown is open.. */
+  /* ..Rotate narrow */
+  .nav-link.w--open .nav-dropdown_arrow {
+    transform: rotate(180deg)
+  }
+
+  /* ..Show overlay on desktop */
+  @media (min-width: 992px) {
+    .nav-menu:has(.nav-link.w--open) .nav-dropdown_overlay {
+      display: block;
+    }
+  }
+
+  /* Lock body scroll when mobile nav is open */
+  body:has( .w-nav-button.w--open) {
+    overflow: hidden;
+  }
+
+  /* Nav CTA wrapper mode when nav menu hidden */
+  @media (min-width: 992px) {
+    .nav-menu + .nav-cta-wrapper {
+      margin-left: 0;
+    }
+  }  
