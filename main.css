@@ -1,3 +1,82 @@
-h1 {
-  color: red !important; 
-}
+  /* Apply font smoothing */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+  }
+
+  /* Reset apple form styles */
+  input, textarea, select { 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none; border-radius: 0; 
+    background-image: none; 
+  }
+
+  /* Adjust input autofill to brand colors */
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    background-color: var(--colors--background) !important;
+    color: var(--colors--text) !important;
+    -webkit-box-shadow: 0 0 0 50px var(--colors--background) inset;
+    -webkit-text-fill-color: var(--colors--text);
+  }
+
+  
+  .w-richtext>:last-child, .w-richtext ol li:last-child, .w-richtext ul li:last-child {
+    margin-bottom: 0 !important;
+  }
+  .rich-text h1, .rich-text h2, .rich-text h3, .rich-text h4 {
+    text-wrap: balance;
+  }
+
+ 
+  /* Line clamp modifiers */
+  .clamp-1 {
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+  .clamp-2 {
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .clamp-3 {
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+ 
+  /* Modal mods */
+  body:has(dialog[open]) {
+    overflow: hidden !important;
+  }
+  dialog.modal[open] {
+    animation: fadein 400ms ease-out forwards;
+  }
+  dialog.modal::backdrop {
+    background: color-mix(in srgb, var(--_color---neutral--black) 80%, transparent);
+  }
+  @keyframes fadein{
+    0%{
+      opacity:0;
+    }
+    100%{
+      opacity:1;
+    }
+  }
+  dialog::-webkit-scrollbar {
+    width: 10px;
+  }            
+  dialog::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: transparent;
+  }            
+  dialog::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    border: 2px solid var(--colors--background);
+    background: var(--colors--text);
+  }
+  dialog::-webkit-scrollbar-thumb:window-inactive {
+    background: var(--colors--text);
+  }
+  
