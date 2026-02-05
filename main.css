@@ -181,3 +181,8 @@ body,html {
       margin-left: 0;
     }
   }  
+
+@keyframes marquee-horizontal_timeline {
+	from { transform: translateX(0%); }
+	to { transform: translateX(-50%); }
+}
